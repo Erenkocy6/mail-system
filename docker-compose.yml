@@ -139,9 +139,6 @@ services:
         condition: service_started
       mailclient:
         condition: service_started
-    ports:
-      - "80:8080"
-      - "443:8443"
     environment:
       SERVER_NAME: localhost
       PORT: "8080"
@@ -167,10 +164,34 @@ services:
     networks:
       - proxy-mailclient
       - proxy-mailserver
+      - ips-proxy
     cap_drop:
       - ALL
     security_opt:
       - no-new-privileges:true
+
+  ips:
+    build:
+      context: ./ips
+    restart: unless-stopped
+    environment:
+      FORWARD_HOST: proxy
+      FORWARD_PORT: 8443
+    ports:
+      - "80:8080"
+      - "443:8443"
+    cap_add:
+      - DAC_OVERRIDE
+      - NET_ADMIN
+      - NET_RAW
+      - SETGID
+      - SETUID
+    sysctls:
+      net.ipv4.ip_forward: "1"
+    depends_on:
+      - proxy
+    networks:
+      - ips-proxy
 
 volumes:
   db_data:
@@ -188,3 +209,4 @@ networks:
   mailserver-keycloak:
   proxy-mailclient:
   proxy-mailserver:
+  ips-proxy:
