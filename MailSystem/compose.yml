@@ -1,0 +1,118 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: maildb
+      POSTGRES_USER: mailserver
+      POSTGRES_PASSWORD: "0&6|Y5u;aM5F"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mailuser -d maildb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mailserver:
+    build:
+      context: .
+      dockerfile: mailserver/Dockerfile
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+      - /var/log:rw,noexec,nosuid,size=128m
+    environment:
+      MS_PORT: 8080
+      MS_JDBC_URL: jdbc:postgresql://postgres:5432/maildb
+      MS_JDBC_USER: mailserver
+      MS_JDBC_PWD: "0&6|Y5u;aM5F"
+      MS_JDBC_DRIVER: org.postgresql.Driver
+    depends_on:
+      postgres:
+        condition: service_healthy
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  mailclient:
+    build:
+      context: .
+      dockerfile: mailclient/Dockerfile
+    restart: unless-stopped
+
+  proxy:
+    image: owasp/modsecurity-crs:4.25-nginx-lts
+    restart: unless-stopped
+    environment:
+      SERVER_NAME: localhost
+      PORT: "8080"
+      SSL_PORT: "8443"
+      NGINX_ALWAYS_TLS_REDIRECT: "on"
+      SSL_CERT_FILE: /run/secrets/proxy_certificate
+      SSL_CERT_KEY_FILE: /run/secrets/proxy_private_key
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG: /dev/stdout
+      MODSEC_AUDIT_LOG_FORMAT: JSON
+      BLOCKING_PARANOIA: "2"
+      DETECTION_PARANOIA: "3"
+      ALLOWED_METHODS: "GET HEAD POST PUT PATCH DELETE OPTIONS"
+      MODSEC_REQ_BODY_ACCESS: "On"
+      MODSEC_REQ_BODY_LIMIT: "13107200"
+      MODSEC_REQ_BODY_NOFILES_LIMIT: "1048576"
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/templates/conf.d/default.conf.template:ro
+    depends_on:
+      mailserver:
+        condition: service_healthy
+      mailclient:
+        condition: service_healthy
+    secrets:
+      - proxy_certificate
+      - proxy_private_key
+
+  ips:
+    build:
+      context: ips
+    restart: unless-stopped
+    environment:
+      FORWARD_HOST: proxy
+      FORWARD_PORT: 8443
+    ports:
+      - "80:8080"
+      - "443:8443"
+    cap_add:
+      - DAC_OVERRIDE
+      - NET_ADMIN
+      - NET_RAW
+      - SETGID
+      - SETUID
+    sysctls:
+      net.ipv4.ip_forward: "1"
+    depends_on:
+      - proxy
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.6.3
+    restart: unless-stopped
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    command: start-dev
+    ports:
+      - "9080:8080"
+    volumes:
+      - kc-data:/opt/keycloak/data
+
+volumes:
+  postgres-data:
+  kc-data:
+
+secrets:
+  proxy_certificate:
+    file: ./proxy/cert/proxy.crt
+  proxy_private_key:
+    file: ./proxy/cert/proxy.key

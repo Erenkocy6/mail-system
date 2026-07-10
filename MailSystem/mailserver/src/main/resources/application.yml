@@ -1,0 +1,19 @@
+server:
+  port: ${MS_PORT:8080}
+
+spring:
+  application:
+    name: mailserver
+
+  datasource:
+    url: ${MS_JDBC_URL:jdbc:h2:mem:maildb}
+    driverClassName: ${MS_JDBC_DRIVER:org.h2.Driver}
+    username: ${MS_JDBC_USER:sa}
+    password: ${MS_JDBC_PWD:password}
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+mailserver:
+  attachment-dir: ${ATTACHMENT_DIR:/app/uploads}

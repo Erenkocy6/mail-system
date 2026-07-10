@@ -1,0 +1,16 @@
+:80 {
+  root * /srv
+
+  # Some Angular builds reference assets directly from /node_modules/*
+  handle /node_modules/* {
+    file_server
+  }
+
+  handle_path /app/* {
+    try_files {path} /index.html
+    file_server
+  }
+
+  redir / /app/ 308
+  redir /app /app/ 308
+}
