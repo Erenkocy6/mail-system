@@ -1,0 +1,7 @@
+.angular
+build
+dist
+node_modules
+!dist
+!dist/frontend
+!dist/frontend/browser

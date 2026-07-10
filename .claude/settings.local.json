@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew :backend:compileKotlin)",
+      "Bash(./gradlew :backend:test)",
+      "Bash(npm run *)",
+      "Bash(./gradlew check *)",
+      "Bash(./gradlew lint *)",
+      "Bash(./gradlew :backend:ktlintFormat)"
+    ]
+  }
+}

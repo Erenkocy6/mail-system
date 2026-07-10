@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Optional Mail Gateway Flow</title>
+  <desc id="desc">Diagram showing optional SMTP outgoing and IMAP incoming integration through the Spring Boot mail gateway.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="520" fill="#f8fafc"/>
+  <text x="600" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#0f172a">Optional Mail Gateway</text>
+  <text x="600" y="88" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#475569">SMTP delivery and IMAP polling are disabled by default and enabled through configuration</text>
+
+  <rect x="72" y="176" width="212" height="118" rx="18" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadow)"/>
+  <text x="178" y="220" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#0f172a">User Action</text>
+  <text x="178" y="248" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Create, send, reply</text>
+
+  <rect x="398" y="144" width="284" height="184" rx="18" fill="#fff7ed" stroke="#fdba74" filter="url(#shadow)"/>
+  <text x="540" y="188" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#9a3412">Spring Boot Backend</text>
+  <text x="540" y="218" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">MailService</text>
+  <text x="540" y="244" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">SMTPService</text>
+  <text x="540" y="270" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">IMAPService</text>
+  <text x="540" y="296" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Ticket tracking</text>
+
+  <rect x="846" y="116" width="242" height="112" rx="18" fill="#eff6ff" stroke="#93c5fd" filter="url(#shadow)"/>
+  <text x="967" y="157" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#1e3a8a">SMTP Server</text>
+  <text x="967" y="186" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Outgoing external mail</text>
+
+  <rect x="846" y="290" width="242" height="112" rx="18" fill="#f0fdf4" stroke="#86efac" filter="url(#shadow)"/>
+  <text x="967" y="331" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#166534">IMAP Mailbox</text>
+  <text x="967" y="360" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Incoming support mail</text>
+
+  <rect x="398" y="386" width="284" height="76" rx="18" fill="#fef2f2" stroke="#fca5a5" filter="url(#shadow)"/>
+  <text x="540" y="417" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700" fill="#991b1b">PostgreSQL</text>
+  <text x="540" y="444" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Persist imported and sent mail</text>
+
+  <path d="M 284 235 L 388 235" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text x="336" y="216" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#1d4ed8">REST request</text>
+
+  <path d="M 682 205 C 754 205 764 172 836 172" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text x="760" y="164" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#1d4ed8">SMTP send</text>
+
+  <path d="M 846 346 C 760 346 760 286 692 286" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text x="758" y="332" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#1d4ed8">IMAP poll</text>
+
+  <path d="M 540 328 L 540 376" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text x="577" y="358" font-family="Inter, Arial, sans-serif" font-size="13" fill="#1d4ed8">JPA</text>
+
+  <rect x="72" y="386" width="212" height="76" rx="18" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="178" y="418" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a">Configuration</text>
+  <text x="178" y="445" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">MAIL_SMTP_* and MAIL_IMAP_*</text>
+</svg>

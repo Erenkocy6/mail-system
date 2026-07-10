@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Mail System Project Layout</title>
+  <desc id="desc">Project layout diagram showing backend, frontend, Docker Compose, Gradle files, environment example, README, and license.</desc>
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.14"/>
+    </filter>
+    <linearGradient id="rootGradient" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#eff6ff"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="620" fill="#f8fafc"/>
+  <text x="600" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#0f172a">Project Layout</text>
+  <text x="600" y="88" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#475569">Repository structure and the main responsibilities of each top-level file or folder</text>
+
+  <rect x="430" y="126" width="340" height="76" rx="18" fill="url(#rootGradient)" stroke="#93c5fd" filter="url(#shadow)"/>
+  <text x="600" y="158" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#1e3a8a">mail-system/</text>
+  <text x="600" y="184" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Full-stack repository root</text>
+
+  <rect x="74" y="260" width="252" height="96" rx="16" fill="#fff7ed" stroke="#fdba74" filter="url(#shadow)"/>
+  <text x="200" y="298" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#9a3412">backend/</text>
+  <text x="200" y="326" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Kotlin and Spring Boot REST API</text>
+
+  <rect x="370" y="260" width="252" height="96" rx="16" fill="#eff6ff" stroke="#93c5fd" filter="url(#shadow)"/>
+  <text x="496" y="298" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#1e3a8a">frontend/</text>
+  <text x="496" y="326" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Angular, PrimeNG, and Tailwind UI</text>
+
+  <rect x="666" y="260" width="252" height="96" rx="16" fill="#f0fdf4" stroke="#86efac" filter="url(#shadow)"/>
+  <text x="792" y="298" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#166534">docker-compose.yml</text>
+  <text x="792" y="326" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">PostgreSQL, backend, frontend stack</text>
+
+  <rect x="74" y="414" width="252" height="96" rx="16" fill="#f5f3ff" stroke="#c4b5fd" filter="url(#shadow)"/>
+  <text x="200" y="452" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#5b21b6">build.gradle.kts</text>
+  <text x="200" y="480" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Root Gradle orchestration</text>
+
+  <rect x="370" y="414" width="252" height="96" rx="16" fill="#ecfeff" stroke="#67e8f9" filter="url(#shadow)"/>
+  <text x="496" y="452" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#155e75">settings.gradle.kts</text>
+  <text x="496" y="480" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Gradle multi-project setup</text>
+
+  <rect x="666" y="414" width="252" height="96" rx="16" fill="#fff1f2" stroke="#fda4af" filter="url(#shadow)"/>
+  <text x="792" y="452" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#9f1239">.env.example</text>
+  <text x="792" y="480" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Example runtime configuration</text>
+
+  <rect x="962" y="260" width="164" height="96" rx="16" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadow)"/>
+  <text x="1044" y="298" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#0f172a">README.adoc</text>
+  <text x="1044" y="326" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Project docs</text>
+
+  <rect x="962" y="414" width="164" height="96" rx="16" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadow)"/>
+  <text x="1044" y="452" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#0f172a">LICENSE</text>
+  <text x="1044" y="480" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">MIT license</text>
+
+  <path d="M 600 202 L 600 226" stroke="#94a3b8" stroke-width="3" fill="none"/>
+  <path d="M 200 226 L 1044 226" stroke="#94a3b8" stroke-width="3" fill="none"/>
+  <path d="M 200 226 L 200 260" stroke="#94a3b8" stroke-width="3" fill="none"/>
+  <path d="M 496 226 L 496 260" stroke="#94a3b8" stroke-width="3" fill="none"/>
+  <path d="M 792 226 L 792 260" stroke="#94a3b8" stroke-width="3" fill="none"/>
+  <path d="M 1044 226 L 1044 260" stroke="#94a3b8" stroke-width="3" fill="none"/>
+  <path d="M 200 356 L 200 414" stroke="#94a3b8" stroke-width="3" fill="none"/>
+  <path d="M 496 356 L 496 414" stroke="#94a3b8" stroke-width="3" fill="none"/>
+  <path d="M 792 356 L 792 414" stroke="#94a3b8" stroke-width="3" fill="none"/>
+  <path d="M 1044 356 L 1044 414" stroke="#94a3b8" stroke-width="3" fill="none"/>
+
+  <rect x="74" y="548" width="1052" height="42" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="600" y="574" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#475569">Generated files and local runtime data stay excluded: .gradle, .kotlin, build, dist, .angular, node_modules, .env, uploads</text>
+</svg>

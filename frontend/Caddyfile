@@ -1,0 +1,16 @@
+:80 {
+    root * /srv
+
+    @api path /api /api/*
+    handle @api {
+        reverse_proxy mailserver:8080
+    }
+
+    handle_path /app/* {
+        try_files {path} /index.html
+        file_server
+    }
+
+    redir / /app/ 308
+    redir /app /app/ 308
+}

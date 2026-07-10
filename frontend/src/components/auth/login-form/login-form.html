@@ -1,0 +1,14 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-50">
+  <div class="card w-full max-w-md p-8 shadow-lg flex flex-col gap-6">
+    <div class="text-center">
+      <h2 class="text-2xl font-bold mb-2">Login</h2>
+      @if (isAuthenticated()) {
+        <p class="text-sm text-gray-600">{{ displayName() }}</p>
+      }
+    </div>
+
+    <button pButton severity="contrast" type="button" class="w-full" (click)="login()">
+      <span pButtonLabel>Login with Keycloak</span>
+    </button>
+  </div>
+</div>
