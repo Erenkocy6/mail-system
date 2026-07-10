@@ -17,6 +17,7 @@ ips =
     -- move o rules of required: include '/etc/snort/local.rules',
     rules = [[
         include /etc/snort/snort3-community-rules/snort3-community.rules
+        include /etc/snort/local.rules
     ]]
 }
 
